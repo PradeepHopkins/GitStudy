@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:qa": "cross-env TEST_ENV=qa playwright test",
+    "test:stage": "cross-env TEST_ENV=stage playwright test",
+    "test:prod": "cross-env TEST_ENV=prod playwright test",
+    "test:headed": "cross-env TEST_ENV=qa playwright test --headed",
+    "test:debug": "cross-env TEST_ENV=qa playwright test --debug",
+    "report": "playwright show-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,6 +18,10 @@
   "devDependencies": {
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.2",
+    "cross-env": "^10.1.0",
     "playwright-bdd": "^9.2.1"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.4"
   }
 }
