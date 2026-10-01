@@ -4,11 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:qa": "cross-env TEST_ENV=qa playwright test",
-    "test:stage": "cross-env TEST_ENV=stage playwright test",
-    "test:prod": "cross-env TEST_ENV=prod playwright test",
-    "test:headed": "cross-env TEST_ENV=qa playwright test --headed",
-    "test:debug": "cross-env TEST_ENV=qa playwright test --debug",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
     "report": "playwright show-report"
   },
   "keywords": [],

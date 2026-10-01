@@ -1,18 +1,29 @@
 import { defineConfig, devices } from '@playwright/test';
 import { defineBddConfig } from "playwright-bdd";
-import './config/config';   // loads qa.env into process.env
+import path from 'path';
+import dotenv from 'dotenv';
 
 /**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
+ * STEP 1: Determine the execution environment.
+ * Default to 'qa' if no ENVIRONMENT variable is provided in the terminal.
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+const environment = process.env.TEST_ENV || 'qa';
 
 /**
- * See https://playwright.dev/docs/test-configuration.
+ * WHY: Load environment variables early.
+ * We use path.resolve to ensure the .env file is found regardless of where the
+ * test runner is invoked from, making the configuration more robust.
+ *
+ * MODIFICATION: We now resolve the path dynamically based on the ENVIRONMENT variable.
+ * Files are expected to be in: /config/qa.env., /config/stage.env, etc.
  */
+
+const env = path.resolve(process.cwd(), `config/${environment}.env`);
+
+dotenv.config({path: env});
+
+console.log(`🚀 Running tests in [${environment.toUpperCase()}] mode using: ${env}`);
 
 const testDir = defineBddConfig({
   features: 'features/**/*.feature',
