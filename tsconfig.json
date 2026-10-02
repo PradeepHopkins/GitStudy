@@ -1,0 +1,23 @@
+{
+    // TypeScript configuration for the project: tells the compiler how to emit JavaScript and check types.
+    "compilerOptions": {
+        // Target version for the generated JavaScript.
+        "target": "ES2020",
+        // Use ES modules in the output JavaScript.
+        "module": "ES2020",
+        // Resolve imports using bundler-style behavior.
+        "moduleResolution": "bundler",
+        // Turn on strict type checking for safer code.
+        "strict": true,
+        // Allow CommonJS modules to work with ES module imports.
+        "esModuleInterop": true,
+        // Skip checking type files from libraries to speed up builds.
+        "skipLibCheck": true,
+        // Allow importing JSON files as modules.
+        "resolveJsonModule": true,
+        // Include Node.js global types like fs and path.
+        "types": [
+            "node"
+        ]
+    }
+}
